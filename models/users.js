@@ -7,6 +7,7 @@ var schema = {
   "date_of_birth": {type:String, default:'-'},
   "handphone": {type:String, default:'-'},
   "address": {type:String, default:'-'},
+  "password": {type:String, default:'-'},
   "createdon": {type:Number, require:true, default:new Date().getTime()},
   "modifiedon": {type:Number, require:true, default:new Date().getTime()},
 
@@ -18,6 +19,18 @@ module.exports.model = model;
 
 module.exports.submitUser=function(userData,callback){
   var user = model(studentData);
+  user.save(function(e,o){
+    console.log(e);
+    if(e) return callback(false);
+    else {
+      callback(true,o);
+    }
+
+  });
+}
+
+module.exports.submitUser=function(userData,callback){
+  var user = model(userData);
   user.save(function(e,o){
     console.log(e);
     if(e) return callback(false);
