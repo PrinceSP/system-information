@@ -3,7 +3,7 @@ const models_students = require('../models/students');
 const models_users = require('../models/users');
 
 module.exports['daftar-siswa'] = function(req, res, next) {
-  models_students.fetchdata(function(e,o){
+  models_students.fetchdataJoinUser(function(e,o){
 
     res.render('page_daftar-siswa.html', { students:o,title: 'DAFTAR SISWA' });
 
