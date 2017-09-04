@@ -12,7 +12,7 @@ module.exports['daftar-siswa'] = function(req, res, next) {
 module.exports['input-siswa'] = function(req, res, next) {
 
 
-    res.render('page_input-siswa', { title: 'INPUT SISWA' });
+    res.render('page_input-siswa.html', { title: 'INPUT SISWA' });
 
 }
 
