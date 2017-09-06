@@ -1,7 +1,7 @@
 const _logger = require('tracer').console()
 const mongoose = require('mongoose');
 const async = require('async');
-const model_user = require('./users.js');
+const model_users = require('./users.js');
 var schema = {
   "username": {type:String, match:/^[a-z0-9]+$/i,minilength:3, maxlength:30, required:true,index: {unique: true}}, //primary key
   "nis": {type:String, required:true,index: {unique: true}},
@@ -66,18 +66,20 @@ module.exports.fetchdataJoinUser = function(callback){
                 var result = students.map(function(u,k){
                   var r = u;
                   r['date_of_birth'] = users_map[u.username].date_of_birth;
+                  r['handphone'] = users_map[u.username].handphone;
                   return r;
                 });
                 callback(e,result);
               });
 
-    async.waterfall([
-      fetchDataStudents,
-      fetchDataUsersByDataStudents
-  ],function(e,doc){
-    if(e)console.log(e);
-    callback(e,doc);
-  });
+
 
   }
+  async.waterfall([
+    fetchDataStudents,
+    fetchDataUsersByDataStudents
+],function(e,doc){
+  if(e)console.log(e);
+  callback(e,doc);
+});
 }
