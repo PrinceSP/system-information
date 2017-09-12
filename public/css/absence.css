@@ -1,0 +1,34 @@
+body {
+  background-image: url("/images/bg.jpeg") !important;
+}
+h1 {
+  text-align: center;
+  font-family: arial;
+  font-size: 38px;
+  color: lightblue !important;
+}
+h2 {
+  margin-left: 170px;
+  color: lightblue !important;
+}
+img {
+  margin-top: 50px;
+  width: 335px;
+}
+.positionpicture {
+  text-align: center;
+}
+.stylinginput {
+  text-align: center;
+  margin-top: 50px;
+}
+.studenttable {
+  margin-top: 40px;
+  text-align: left;
+}
+.studentinf {
+  margin-top: 50px;
+}
+.table-bordered {
+  color: aquamarine;
+}

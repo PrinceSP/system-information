@@ -31,7 +31,7 @@ module.exports.submitStudent=submitStudent;
 
 const fetchData = function(callback){
 
-  model .find({},function(e,o){
+  model.find({},function(e,o){
     if(e) return callback(e,o);
     else {
       callback(e,o);
@@ -41,6 +41,12 @@ const fetchData = function(callback){
 }
 
 module.exports.fetchData=fetchData;
+
+module.exports.fetchDataInputNis=function(inputnis,callback){
+  model.findOne({nis:inputnis},function(e,o){
+    callback(e,o);
+  });
+}
 
 
 module.exports.fetchdataJoinUser = function(callback){

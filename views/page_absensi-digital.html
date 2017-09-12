@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <link href="/css/absence.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+    <div class="row">
+      <h1><u>Students absences</u></h1>
+      <div class="col-md-6">
+        <div class="col-md-12 positionpicture">
+          <img src = "/images/profile.png">
+        </div>
+      <div class="col-md-12 stylinginput">
+        <input type="text" name="nis" id="nis">
+      </div>
+      </div>
+      <div class="col-md-6 studentinf">
+        <h2><u>Student Information</u></h2>
+      <div class="col-md-12  studenttable">
+        <div class="col-md-12 container">
+        <table class="table table-bordered">
+          <tr>
+            <td>Name:</td>
+            <td><span id="textName"></span></td>
+          </tr>
+          <tr>
+            <td>Class:</td>
+            <td><span id="textClass"></td>
+          </tr>
+        </table>
+      </div>
+      </div>
+      </div>
+    </div>
+<script>
+$(document).ready(function(){
+  $("#nis").on("change", function(){
+    var nis = $("#nis").val();
+      $.get("/api/getsiswa?nis=" + nis, function(data){
+          alert("name" + "\nStatus: " + data.status);
+          $('#textName').html(data.users.fullname);
+          $('#textClass').html(data.students.class);
+
+      });
+  });
+});
+</script>
+</body>
+</html>

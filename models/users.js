@@ -29,6 +29,12 @@ module.exports.submitUser=function(userData,callback){
   });
 }
 
+module.exports.fetchDataInputNis=function(inputnis,callback){
+  model.findOne({username:inputnis},function(e,o){
+    callback(e,o);
+  });
+}
+
 module.exports.submitUser=function(userData,callback){
   var user = model(userData);
   user.save(function(e,o){

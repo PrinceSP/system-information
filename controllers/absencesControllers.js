@@ -6,3 +6,6 @@ module.exports['absensi-siswa'] = function(req, res, next) {
     res.render('page_absensi-siswa.html', { students:o,title: 'ABSENSI SISWA' });
   });
 }
+module.exports['absensi-digital'] = function(req, res, next) {
+  res.render('page_absensi-digital.html', { title: 'ABSENSI DIGITAL' });
+}

@@ -11,9 +11,10 @@ var model_users = require('../models/users');
 
 router.get(['/daftar-siswa'], [], _controllers_students['daftar-siswa']);
 router.get(['/absensi-siswa'], [], _controllers_absences['absensi-siswa']);
-router.get(['/input-siswa'], [], _controllers_students['input-siswa']);
+router.get(['/form-siswa'], [], _controllers_students['form-siswa']);
 router.post(['/submit-input-siswa'], [], _controllers_students['submit-input-siswa']);
 router.get(['/daftar-user'], [], _controllers_users['daftar-user']);
+router.get(['/absensi-digital'],[], _controllers_absences['absensi-digital']);
 
 
 

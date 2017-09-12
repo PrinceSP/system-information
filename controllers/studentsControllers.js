@@ -9,10 +9,25 @@ module.exports['daftar-siswa'] = function(req, res, next) {
 
   });
 }
-module.exports['input-siswa'] = function(req, res, next) {
+module.exports['getsiswa'] = function(req, res, next) {
+  var inputnis = req.query.nis;
+  models_students.fetchDataInputNis(inputnis, function(e1,o1){
+    models_users.fetchDataInputNis(o1.username, function(e2,o2){
+      res.json({
+          status:true,
+          message:"test",
+          students:o1,
+          users:o2
+      });
+    });
+
+  });
+
+};
+module.exports['form-siswa'] = function(req, res, next) {
 
 
-    res.render('page_input-siswa.html', { title: 'INPUT SISWA' });
+    res.render('page_form-siswa.html', { title: 'FORM SISWA' });
 
 }
 
