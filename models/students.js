@@ -6,6 +6,7 @@ var schema = {
   "username": {type:String, match:/^[a-z0-9]+$/i,minilength:3, maxlength:30, required:true,index: {unique: true}}, //primary key
   "nis": {type:String, required:true,index: {unique: true}},
   "class": {type:String, default:'-'},
+  "photo": {type:String, default:'-'},
   "createdon": {type:Number, require:true, default:new Date().getTime()},
   "modifiedon": {type:Number, require:true, default:new Date().getTime()},
   "year_in": {type:String, default:'-'},

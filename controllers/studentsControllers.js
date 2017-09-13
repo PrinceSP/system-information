@@ -38,6 +38,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
     username:req.body.username,
     nis:req.body.nis,
     class:req.body.class,
+    photo:req.body.photo,
     createdon:createdon,
     modifiedon:modifiedon,
     year_in:req.body.year_in
