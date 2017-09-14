@@ -1,4 +1,7 @@
 const _logger = require('tracer').console();
+const formidable = require('formidable');
+const path = require('path');
+const fs = require('fs');
 const models_absences = require('../models/absences');
 
 module.exports['absensi-siswa'] = function(req, res, next) {

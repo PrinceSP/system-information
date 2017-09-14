@@ -11,12 +11,13 @@ module.exports['form-image'] = function(req, res, next) {
 }
 module.exports['upload'] = function(req, res, next) {
   var form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    var old_path = files.file.path,
-    file_size = files.file.name.split('.').pop(),
-    index = old_path.lastIndexOf('/') + 1,
-    file_name = old_path.substr(index),
-    new_path = path.join(process.env.PWD, '/upload/', file_name + '.' );
+  form.parse(req, function(err,fields, files){
+    var file_origin_name = files.file.name;
+    var old_path = files.file.path;
+    var file_extension = files.file.name.split('.').pop();
+    var index = old_path.lastIndexOf('/') + 1;
+    var file_name = old_path.substr(index);
+    var new_path = path.join(process.env.PWD, '/upload/', file_name + '.' + file_extension);
 
   fs.readFile(old_path, function(err, data){
     fs.writeFile(new_path, data, function(err){
@@ -30,6 +31,5 @@ module.exports['upload'] = function(req, res, next) {
       }
     });
   });
-  });
-
-}
+});
+};
