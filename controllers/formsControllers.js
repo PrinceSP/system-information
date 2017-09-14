@@ -11,15 +11,6 @@ module.exports['form-image'] = function(req, res, next) {
 }
 module.exports['upload'] = function(req, res, next) {
   var form = new formidable.IncomingForm();
-
-  form.parse(req, function(err,fields, files){
-    var file_origin_name = files.file.name;
-    var old_path = files.file.path;
-    var file_extension = files.file.name.split('.').pop();
-    var index = old_path.lastIndexOf('/') + 1;
-    var file_name = old_path.substr(index);
-    var new_path = path.join(process.env.PWD, '/upload/', file_name + '.' + file_extension);
-
   form.parse(req, function(err, fields, files){
     var file_origin_name = files.file.name;
     var old_path = files.file.path;
@@ -42,6 +33,10 @@ module.exports['upload'] = function(req, res, next) {
       });
     });
   });
+<<<<<<< HEAD
 
 });
 };
+=======
+}
+>>>>>>> 10fe3189097b96486caac2c37ac70c5cc8d259f5
