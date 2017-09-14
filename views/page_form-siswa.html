@@ -30,7 +30,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="/submit-input-siswa" method="post">
+              <!-- <form role="form" action="/submit-input-siswa"  method="post"> -->
+              <form role="form" action="/submit-input-siswa" enctype="multipart/form-data" method="post">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Fullname</label>
@@ -71,6 +72,7 @@
                 <div class="form-group">
                   <label for="exampleInputFile">Photo</label>
                   <input name="photo" id="exampleInputFile" type="file">
+                  <!-- <input type="file" name="file"> -->
                   </label>
                 </div>
               </div>

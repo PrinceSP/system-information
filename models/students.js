@@ -17,8 +17,10 @@ var model = mongoose.model('students',schemaObject);
 module.exports.model = model;
 
 const submitStudent=function(studentData,callback){
+  _logger.info('submitStudent',submitStudent);
   var student = model(studentData);
   student.save(function(e,o){
+    _logger.info('studentData', studentData);
     console.log(e);
     if(e) return callback(false);
     else {
