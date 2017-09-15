@@ -35,7 +35,4 @@ module.exports['upload'] = function(req, res, next) {
   });
 
 
-});
 };
-
-}
