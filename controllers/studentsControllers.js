@@ -130,4 +130,5 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
           }); //end models_students.submitStudent
 
         });//end form.parse
+});
 };

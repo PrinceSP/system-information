@@ -33,10 +33,9 @@ module.exports['upload'] = function(req, res, next) {
       });
     });
   });
-<<<<<<< HEAD
+
 
 });
 };
-=======
+
 }
->>>>>>> 10fe3189097b96486caac2c37ac70c5cc8d259f5
