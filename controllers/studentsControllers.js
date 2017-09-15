@@ -97,16 +97,12 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
           _logger.info('dataStudents ', dataStudents);
           //submit data ke table student
           models_students.submitStudent(dataStudents,function(status,o){
-<<<<<<< HEAD
             _logger.info('dataStudents', dataStudents);
             //submit data ke table user
             models_users.submitUser(dataUsers,function(status,o){
               _logger.info('dataUsers',dataUsers);
-=======
             //submit data ke table user
             models_users.submitUser(dataUsers,function(status,o){
->>>>>>> 10fe3189097b96486caac2c37ac70c5cc8d259f5
-
               //uplad photo dari local ke server
               fs.readFile(old_path, function(err, data){
                 fs.writeFile(new_path, data, function(err){
