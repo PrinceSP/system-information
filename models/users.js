@@ -21,7 +21,7 @@ module.exports.submitUser=function(userData,callback){
   var user = model(studentData);
   user.save(function(e,o){
     console.log(e);
-    if(e) return callback(false);
+    if(e) return callback(false,null,e);
     else {
       callback(true,o);
     }

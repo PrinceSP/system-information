@@ -95,40 +95,45 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             modifiedon:modifiedon,
           }
           _logger.info('dataStudents ', dataStudents);
+
+          var out_success = function(){
+            // res.json({
+            //   fullname:req.body.fullname,
+            //   username:req.body.username,
+            //   email:req.body.email,
+            //   date_of_birth:req.body.date_of_birth,
+            //   handphone:req.body.handphone,
+            //   address:req.body.address,
+            //   year_in:req.body.year_in,
+            //   class:req.body.class,
+            //   nis:req.body.nis,
+            //   photo:req.body.photo
+            // });
+            //langsung direct page aja setelah success insert data
+            res.redirect('/daftar-siswa');
+          }
+          var out_error = function(msg){
+            res.json({status:false, msg:msg});
+          }
+
           //submit data ke table student
-          models_students.submitStudent(dataStudents,function(status,o){
+          models_students.submitStudent(dataStudents,function(status,o,msg){
             _logger.info('dataStudents', dataStudents);
+            if(!status) return out_error(msg);
             //submit data ke table user
-            models_users.submitUser(dataUsers,function(status,o){
-              _logger.info('dataUsers',dataUsers);
-            //submit data ke table user
-            models_users.submitUser(dataUsers,function(status,o){
+            models_users.submitUser(dataUsers,function(status,o,msg){
+              if(!status) return out_error(msg);
               //uplad photo dari local ke server
               fs.readFile(old_path, function(err, data){
                 fs.writeFile(new_path, data, function(err){
                   if (err) {
-                    console.log(err);
-                    res.status(500);
-                    res.json({'success': 'tess'});
-                  } else {
-                    res.json({
-                      fullname:req.body.fullname,
-                      username:req.body.username,
-                      email:req.body.email,
-                      date_of_birth:req.body.date_of_birth,
-                      handphone:req.body.handphone,
-                      address:req.body.address,
-                      year_in:req.body.year_in,
-                      class:req.body.class,
-                      nis:req.body.nis,
-                      photo:req.body.photo
-                    });
+                    console.log('gagal upload photo.', err);
                   }
+                  return out_success();
                 });
               });
             });//end models_users.submitUser
           }); //end models_students.submitStudent
 
         });//end form.parse
-});
 };

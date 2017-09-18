@@ -22,9 +22,9 @@ const submitStudent=function(studentData,callback){
   student.save(function(e,o){
     _logger.info('studentData', studentData);
     console.log(e);
-    if(e) return callback(false);
+    if(e) return callback(false,null,e);
     else {
-      callback(true,o);
+      callback(true,o,'');
     }
 
   });
