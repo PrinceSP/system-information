@@ -7,6 +7,7 @@ const _controllers_users = require('../controllers/usersControllers');
 
 var model_students = require('../models/students');
 var model_users = require('../models/users');
+var model_absences = require('../models/absences');
 
 
 router.get(['/getsiswa'], [], _controllers_students['getsiswa']);

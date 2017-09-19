@@ -7,7 +7,7 @@ var schema = {
   "date_of_birth": {type:String, default:'-'},
   "handphone": {type:String, default:'-'},
   "address": {type:String, default:'-'},
-  "password": {type:String, default:'-'},
+  "photo": {type:String, default:'-'},
   "createdon": {type:Number, require:true, default:new Date().getTime()},
   "modifiedon": {type:Number, require:true, default:new Date().getTime()},
 

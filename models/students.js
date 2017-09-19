@@ -22,9 +22,9 @@ const submitStudent=function(studentData,callback){
   student.save(function(e,o){
     _logger.info('studentData', studentData);
     console.log(e);
-    if(e) return callback(false);
+    if(e) return callback(false,null,e);
     else {
-      callback(true,o);
+      callback(true,o,'');
     }
 
   });
@@ -76,6 +76,7 @@ module.exports.fetchdataJoinUser = function(callback){
                   var r = u;
                   r['date_of_birth'] = users_map[u.username].date_of_birth;
                   r['handphone'] = users_map[u.username].handphone;
+                  r['photo'] = users_map[u.username].photo;
                   return r;
                 });
                 callback(e,result);

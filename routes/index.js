@@ -8,6 +8,7 @@ const _controllers_forms = require('../controllers/formsControllers');
 
 var model_students = require('../models/students');
 var model_users = require('../models/users');
+var model_absences = require('../models/absences');
 
 
 router.get(['/daftar-siswa'], [], _controllers_students['daftar-siswa']);

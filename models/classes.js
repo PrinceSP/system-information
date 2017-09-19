@@ -7,5 +7,6 @@ var schema = {
   "class": {type:String, default:'-'},
 }
 module.exports.schema = schema;
+var schemaObject = new mongoose.Schema(schema);
 var model = mongoose.model('classes',schemaObject);
 module.exports.model = model;

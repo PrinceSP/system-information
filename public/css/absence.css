@@ -16,6 +16,7 @@ img {
   width: 335px;
 }
 .positionpicture {
+  opacity: 0.5;
   text-align: center;
 }
 .stylinginput {
