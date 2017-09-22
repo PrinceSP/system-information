@@ -12,11 +12,11 @@ h2 {
   color: lightblue !important;
 }
 img {
+  opacity: 0.9;
   margin-top: 50px;
   width: 335px;
 }
 .positionpicture {
-  opacity: 0.5;
   text-align: center;
 }
 .stylinginput {

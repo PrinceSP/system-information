@@ -1,4 +1,7 @@
 const _logger = require('tracer').console()
+const formidable = require('formidable');
+const path = require('path');
+const fs = require('fs');
 const mongoose = require('mongoose');
 var schema = {
   "fullname": {type:String, default:'-'},
@@ -21,7 +24,7 @@ module.exports.submitUser=function(userData,callback){
   var user = model(studentData);
   user.save(function(e,o){
     console.log(e);
-    if(e) return callback(false);
+    if(e) return callback(false,null,e);
     else {
       callback(true,o);
     }

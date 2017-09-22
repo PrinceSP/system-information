@@ -4,7 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const models_students = require('../models/students');
 const models_users = require('../models/users');
-const models_absences = require('../models/absences');
 
 module.exports['daftar-siswa'] = function(req, res, next) {
   models_students.fetchdataJoinUser(function(e,o){
@@ -15,7 +14,6 @@ module.exports['daftar-siswa'] = function(req, res, next) {
 }
 module.exports['getsiswa'] = function(req, res, next) {
   var inputnis = req.query.nis;
-  models_absences.submitAbsence(submitAbsence, function(callback){
   models_students.fetchDataInputNis(inputnis, function(e1,o1){
     models_users.fetchDataInputNis(o1.username, function(e2,o2){
       res.json({
@@ -27,7 +25,7 @@ module.exports['getsiswa'] = function(req, res, next) {
     });
 
   });
-});
+
 };
 module.exports['form-siswa'] = function(req, res, next) {
 
@@ -44,7 +42,8 @@ module.exports['/public/upload'] = function(req, res, next) {
     var file_extension = files.file.name.split('.').pop();
     var index = old_path.lastIndexOf('/') + 1;
     var file_name = old_path.substr(index);
-    var new_path = path.join(process.env.PWD, '/public/upload/', file_name + '.' + file_extension);
+    var new_file_name = file_name + '.' + file_extension;
+    var new_path = path.join(process.env.PWD, '/public/upload/', new_file_name);
 
   fs.readFile(old_path, function(err, data){
     fs.writeFile(new_path, data, function(err){
@@ -81,7 +80,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             username:fields.username,
             nis:fields.nis,
             class:fields.class,
-            photo:fields.photo,
+            photo:new_file_name,
             createdon:createdon,
             modifiedon:modifiedon,
             year_in:fields.year_in
@@ -93,7 +92,6 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             date_of_birth:fields.date_of_birth,
             handphone:fields.handphone,
             address:fields.address,
-            photo:new_file_name,
             createdon:createdon,
             modifiedon:modifiedon,
           }
@@ -108,11 +106,11 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             //   handphone:req.body.handphone,
             //   address:req.body.address,
             //   year_in:req.body.year_in,
-            //   class:req.body.username,
+            //   class:req.body.class,
             //   nis:req.body.nis,
-            //   photo:req.body.photo,
+            //   photo:req.body.photo
             // });
-            // langsung direct page saja setelah success insert data
+            //langsung direct page aja setelah success insert data
             res.redirect('/daftar-siswa');
           }
           var out_error = function(msg){
@@ -123,10 +121,10 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
           models_students.submitStudent(dataStudents,function(status,o,msg){
             _logger.info('dataStudents', dataStudents);
             if(!status) return out_error(msg);
-            // submit data ke table user
+            //submit data ke table user
             models_users.submitUser(dataUsers,function(status,o,msg){
               if(!status) return out_error(msg);
-            //upload photo dari local ke server
+              //uplad photo dari local ke server
               fs.readFile(old_path, function(err, data){
                 fs.writeFile(new_path, data, function(err){
                   if (err) {

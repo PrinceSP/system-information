@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <body>
     <div class="row">
-      <h1><u><b>Students absences</b></u></h1>
+      <h1><u>Students absences</u></h1>
       <div class="col-md-6">
         <div class="col-md-12 positionpicture">
           <img id="photoProfile" src = "/images/profile.png">
@@ -40,7 +40,7 @@ $(document).ready(function(){
           alert("name" + "\nStatus: " + data.status);
           $('#textName').html(data.users.fullname);
           $('#textClass').html(data.students.class);
-          $('#photoProfile').attr('src','/upload/'+data.users.photo);
+          $('#photoProfile').attr('src','/upload/'+data.students.photo);
       });
   });
 });

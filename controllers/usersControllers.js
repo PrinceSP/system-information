@@ -1,4 +1,7 @@
 const _logger = require('tracer').console();
+const formidable = require('formidable');
+const path = require('path');
+const fs = require('fs');
 const models_users = require('../models/users');
 module.exports['daftar-user'] = function(req, res, next) {
   models_users.fetchdata(function(e,o){

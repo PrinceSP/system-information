@@ -1,5 +1,8 @@
 const _logger = require('tracer').console()
 const mongoose = require('mongoose');
+const formidable = require('formidable');
+const path = require('path');
+const fs = require('fs');
 const async = require('async');
 const model_users = require('./users.js');
 var schema = {
@@ -76,7 +79,7 @@ module.exports.fetchdataJoinUser = function(callback){
                   var r = u;
                   r['date_of_birth'] = users_map[u.username].date_of_birth;
                   r['handphone'] = users_map[u.username].handphone;
-                  r['photo'] = users_map[u.username].photo;
+                  //r['photo'] = users_map[u.username].photo;
                   return r;
                 });
                 callback(e,result);
