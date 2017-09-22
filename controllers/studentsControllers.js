@@ -69,7 +69,8 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
           var file_extension = files.photo.name.split('.').pop();
           var index = old_path.lastIndexOf('/') + 1;
           var file_name = old_path.substr(index);
-          var new_path = path.join(process.env.PWD, '/upload/', file_name + '.' + file_extension);
+          var new_file_name = file_name + '.' + file_extension;
+          var new_path = path.join(process.env.PWD, '/upload/', new_file_name);
 
           //collect data-data dari form
           var createdon=new Date().getTime();
@@ -78,7 +79,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             username:fields.username,
             nis:fields.nis,
             class:fields.class,
-            photo:fields.photo,
+            photo:new_file_name,
             createdon:createdon,
             modifiedon:modifiedon,
             year_in:fields.year_in
@@ -90,7 +91,6 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             date_of_birth:fields.date_of_birth,
             handphone:fields.handphone,
             address:fields.address,
-            photo:fields.photo,
             createdon:createdon,
             modifiedon:modifiedon,
           }
