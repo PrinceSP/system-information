@@ -73,6 +73,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
           var new_file_name = file_name + '.' + file_extension;
           var new_path = path.join(process.env.PWD, '/public/upload/', new_file_name);
 
+
           //collect data-data dari form
           var createdon=new Date().getTime();
           var modifiedon=createdon;
