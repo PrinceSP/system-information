@@ -92,6 +92,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             email:fields.email,
             date_of_birth:fields.date_of_birth,
             handphone:fields.handphone,
+            photo:new_file_name,
             address:fields.address,
             createdon:createdon,
             modifiedon:modifiedon,
