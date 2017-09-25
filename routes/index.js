@@ -18,6 +18,7 @@ router.get(['/absensi-digital'],[], _controllers_absences['absensi-digital']);
 router.get(['/login'],[], _controllers_logins['login']);
 router.get(['/register'],[], _controllers_logins['register']);
 router.post(['/submit-login'],[], _controllers_logins['submit-login']);
+router.post(['/submit-input-user'],[], _controllers_users['submit-input-user']);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

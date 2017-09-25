@@ -5,7 +5,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Input siswa
+      Input user
       <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
@@ -37,7 +37,7 @@
 
             <!-- <form role="form" action="/submit-input-siswa" method="post"> -->
 
-              <form role="form" action="/submit-input-siswa" enctype="multipart/form-data" method="post">
+              <form role="form" action="/submit-input-user" enctype="multipart/form-data" method="post">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Fullname</label>
@@ -45,38 +45,47 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Username</label>
-                  <input name="username1" class="form-control" id="exampleInputEmail1" placeholder="Enter username" type="username">
+                  <input name="username" class="form-control" id="exampleInputEmail1" placeholder="Enter username" type="username">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input  name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" type="password">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input name="email1" class="form-control" id="exampleInputEmail1" placeholder="Enter your email" type="email">
+                  <input name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email" type="email">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date of birth</label>
-                  <input name="date_of_birth1" class="form-control" id="exampleInputEmail1" placeholder="Enter your born date" type="date_of_birth">
+                  <input name="date_of_birth" class="form-control" id="exampleInputEmail1" placeholder="Enter your born date" type="date_of_birth">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Handphone</label>
-                  <input name="handphone1" class="form-control" id="exampleInputEmail1" placeholder="Enter phone number" type="handphone">
+                  <input name="handphone" class="form-control" id="exampleInputEmail1" placeholder="Enter phone number" type="handphone">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Address</label>
-                  <input name="address1" class="form-control" id="exampleInputEmail1" placeholder="Enter address" type="address">
+                  <input name="address" class="form-control" id="exampleInputEmail1" placeholder="Enter address" type="address">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Year in</label>
-                  <input name="year_in1" class="form-control" id="exampleInputEmail1" placeholder="Enter your year in " type="year_in">
+                  <input name="year_in" class="form-control" id="exampleInputEmail1" placeholder="Enter your year in " type="year_in">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Class</label>
-                  <input name="class1" class="form-control" id="exampleInputEmail1" placeholder="Enter your class" type="class">
+                  <input name="class" class="form-control" id="exampleInputEmail1" placeholder="Enter your class" type="class">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">NIS</label>
-                  <input name="nis1" class="form-control" id="exampleInputEmail1" placeholder="Enter your school NIS" type="nis">
+                  <input name="nis" class="form-control" id="exampleInputEmail1" placeholder="Enter your school NIS" type="nis">
                 </div>
               </div>
-
+              <div class="form-group">
+                <label for="exampleInputFile">Photo</label>
+                <input name="photo" id="exampleInputFile" type="file">
+                <!-- <input type="file" name="file"> -->
+                <!-- </label> -->
+              </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
