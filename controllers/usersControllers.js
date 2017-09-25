@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const models_users = require('../models/users');
 const models_students = require('../models/students');
+const util = require('../utils/util');
 module.exports['daftar-user'] = function(req, res, next) {
   models_users.fetchdata(function(e,o){
 
@@ -61,15 +62,7 @@ module.exports['submit-input-user'] = function(req, res, next) {
           //collect data-data dari form
           var createdon=new Date().getTime();
           var modifiedon=createdon;
-          var dataStudents={
-            username:fields.username,
-            nis:fields.nis,
-            class:fields.class,
-            photo:new_file_name,
-            createdon:createdon,
-            modifiedon:modifiedon,
-            year_in:fields.year_in
-          }
+
           var dataUsers={
             fullname:fields.fullname,
             username:fields.username,
@@ -82,7 +75,7 @@ module.exports['submit-input-user'] = function(req, res, next) {
             createdon:createdon,
             modifiedon:modifiedon,
           }
-          _logger.info('dataStudents ', dataStudents);
+
 
           var out_success = function(){
             // res.json({
@@ -104,10 +97,8 @@ module.exports['submit-input-user'] = function(req, res, next) {
             res.json({status:false, msg:msg});
           }
 
-          //submit data ke table student
-          models_students.submitStudent(dataStudents,function(status,o,msg){
-            _logger.info('dataStudents', dataStudents);
-            if(!status) return out_error(msg);
+          util.encryptPassword(dataUsers.password,function(passwordEncrypted){
+            dataUsers.password = passwordEncrypted;
             //submit data ke table user
             models_users.submitUser(dataUsers,function(status,o,msg){
               if(!status) return out_error(msg);
@@ -121,7 +112,8 @@ module.exports['submit-input-user'] = function(req, res, next) {
                 });
               });
             });//end models_users.submitUser
-          }); //end models_students.submitStudent
+          }); //end util.encryptPassword
+
 
         });//end form.parse
 };
