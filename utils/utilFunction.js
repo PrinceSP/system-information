@@ -1,4 +1,4 @@
-const crypto 		= require('crypto');
+const crypto = require('crypto');
 
 function getPaginator(resultCount,onPage,pageSize,url){
     var paginator = {};
