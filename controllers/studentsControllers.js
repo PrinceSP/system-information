@@ -64,6 +64,8 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
   _logger.info('submit-input-siswa invok');
     var form = new formidable.IncomingForm();
     form.parse(req, function(err,fields, files){
+    _logger.info('fields=>',fields);
+    _logger.info('files=>',files);    
         //baca meta data file
           var file_origin_name = files.photo.name;
           var old_path = files.photo.path;

@@ -3,22 +3,21 @@ var router = express.Router();
 const _controllers_students = require('../controllers/studentsControllers');
 const _controllers_absences = require('../controllers/absencesControllers');
 const _controllers_users = require('../controllers/usersControllers');
-const _controllers_forms = require('../controllers/formsControllers');
-
+const _controllers_logins = require('../controllers/loginsControllers');
 
 var model_students = require('../models/students');
 var model_users = require('../models/users');
 
-
 router.get(['/daftar-siswa'], [], _controllers_students['daftar-siswa']);
 router.get(['/absensi-siswa'], [], _controllers_absences['absensi-siswa']);
 router.get(['/form-siswa'], [], _controllers_students['form-siswa']);
+router.get(['/form-user'], [], _controllers_users['form-user']);
 router.post(['/submit-input-siswa'], [], _controllers_students['submit-input-siswa']);
 router.get(['/daftar-user'], [], _controllers_users['daftar-user']);
 router.get(['/absensi-digital'],[], _controllers_absences['absensi-digital']);
-router.get(['/form-image'],[], _controllers_forms['form-image']);
-router.post(['/upload'],[], _controllers_forms['upload']);
-
+router.get(['/login'],[], _controllers_logins['login']);
+router.get(['/register'],[], _controllers_logins['register']);
+router.post(['/submit-login'],[], _controllers_logins['submit-login']);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

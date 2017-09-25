@@ -37,7 +37,6 @@ $(document).ready(function(){
   $("#nis").on("change", function(){
     var nis = $("#nis").val();
       $.get("/api/getsiswa?nis=" + nis, function(data){
-          alert("name" + "\nStatus: " + data.status);
           $('#textName').html(data.users.fullname);
           $('#textClass').html(data.students.class);
           $('#photoProfile').attr('src','/upload/'+data.students.photo);

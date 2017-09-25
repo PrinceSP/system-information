@@ -10,3 +10,7 @@ module.exports['daftar-user'] = function(req, res, next) {
 
   });
 }
+
+module.exports['form-user'] = function(req, res, next) {
+    res.render('page_form-user.html', { title: 'FORM USER' });
+}

@@ -1,0 +1,104 @@
+<%include includes/header.html%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Input siswa
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home </a></li>
+      <li class="/daftar-siswa">Daftar siswa</li>
+      <li class="/absensi-siswa">Absensi siswa</li>
+      <li class="/form-siswa">Form siswa</li>
+      <li class="/daftar-user">Daftar user</li>
+      <li class="/absensi-digital">Absensi digital</li>
+      <li class="/login">Login</li>
+      <li class="/form-user">Form user</li>
+
+    </ol>
+  </section>
+
+  <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data user</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <!-- <form role="form" action="/submit-input-siswa"  method="post"> -->
+
+            <!-- <form role="form" action="/submit-input-siswa" method="post"> -->
+
+              <form role="form" action="/submit-input-siswa" enctype="multipart/form-data" method="post">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Fullname</label>
+                  <input name="fullname1" class="form-control" id="exampleInputEmail1" placeholder="Enter fullname" type="fullname">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Username</label>
+                  <input name="username1" class="form-control" id="exampleInputEmail1" placeholder="Enter username" type="username">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input name="email1" class="form-control" id="exampleInputEmail1" placeholder="Enter your email" type="email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Date of birth</label>
+                  <input name="date_of_birth1" class="form-control" id="exampleInputEmail1" placeholder="Enter your born date" type="date_of_birth">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Handphone</label>
+                  <input name="handphone1" class="form-control" id="exampleInputEmail1" placeholder="Enter phone number" type="handphone">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address</label>
+                  <input name="address1" class="form-control" id="exampleInputEmail1" placeholder="Enter address" type="address">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Year in</label>
+                  <input name="year_in1" class="form-control" id="exampleInputEmail1" placeholder="Enter your year in " type="year_in">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Class</label>
+                  <input name="class1" class="form-control" id="exampleInputEmail1" placeholder="Enter your class" type="class">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">NIS</label>
+                  <input name="nis1" class="form-control" id="exampleInputEmail1" placeholder="Enter your school NIS" type="nis">
+                </div>
+              </div>
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+
+        </div>
+        <!--/.col (left) -->
+      </div>
+      <!-- /.row -->
+    </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+
+
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%include includes/footer.html%>
