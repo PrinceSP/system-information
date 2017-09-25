@@ -27,6 +27,13 @@ module.exports.fetchDataInputNis=function(inputnis,callback){
   });
 }
 
+module.exports.fetchDataByEmail=function(email,callback){
+  model.findOne({email:email},function(e,o){
+    callback(e,o);
+  });
+}
+
+
 module.exports.submitUser=function(userData,callback){
   var user = model(userData);
   user.save(function(e,o){

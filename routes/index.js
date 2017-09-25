@@ -4,18 +4,20 @@ const _controllers_students = require('../controllers/studentsControllers');
 const _controllers_absences = require('../controllers/absencesControllers');
 const _controllers_users = require('../controllers/usersControllers');
 const _controllers_logins = require('../controllers/loginsControllers');
+const _middlewares_auth_admin = require('../middlewares/auth_admin');
 
 var model_students = require('../models/students');
 var model_users = require('../models/users');
 
-router.get(['/daftar-siswa'], [], _controllers_students['daftar-siswa']);
-router.get(['/absensi-siswa'], [], _controllers_absences['absensi-siswa']);
+router.get(['/daftar-siswa'], [_middlewares_auth_admin], _controllers_students['daftar-siswa']);
+router.get(['/absensi-siswa'], [_middlewares_auth_admin], _controllers_absences['absensi-siswa']);
 router.get(['/form-siswa'], [], _controllers_students['form-siswa']);
 router.get(['/form-user'], [], _controllers_users['form-user']);
 router.post(['/submit-input-siswa'], [], _controllers_students['submit-input-siswa']);
-router.get(['/daftar-user'], [], _controllers_users['daftar-user']);
+router.get(['/daftar-user'], [_middlewares_auth_admin], _controllers_users['daftar-user']);
 router.get(['/absensi-digital'],[], _controllers_absences['absensi-digital']);
 router.get(['/login'],[], _controllers_logins['login']);
+router.get(['/logout'],[], _controllers_logins['logout']);
 router.get(['/register'],[], _controllers_logins['register']);
 router.post(['/submit-login'],[], _controllers_logins['submit-login']);
 router.post(['/submit-input-user'],[], _controllers_users['submit-input-user']);
