@@ -11,7 +11,7 @@ var schema = {
   "handphone": {type:String, default:'-'},
   "address": {type:String, default:'-'},
   "password": {type:String, require:true},
-  "photo": {type:String, require:true},  
+  "photo": {type:String, default:'.'},  
   "createdon": {type:Number, require:true, default:new Date().getTime()},
   "modifiedon": {type:Number, require:true, default:new Date().getTime()},
 
