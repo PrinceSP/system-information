@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const models_students = require('../models/students');
 const models_users = require('../models/users');
+const models_absences = require('../models/absences');
 
 module.exports['daftar-siswa'] = function(req, res, next) {
   models_students.fetchdataJoinUser(function(e,o){
@@ -65,7 +66,7 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, function(err,fields, files){
     _logger.info('fields=>',fields);
-    _logger.info('files=>',files);    
+    _logger.info('files=>',files);
         //baca meta data file
           var file_origin_name = files.photo.name;
           var old_path = files.photo.path;

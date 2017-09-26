@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const models_users = require('../models/users');
 const models_students = require('../models/students');
+const models_absences = require('../models/absences');
 const util = require('../utils/utilFunction');
 module.exports['daftar-user'] = function(req, res, next) {
   models_users.fetchdata(function(e,o){

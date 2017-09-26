@@ -8,6 +8,7 @@ const _middlewares_auth_admin = require('../middlewares/auth_admin');
 
 var model_students = require('../models/students');
 var model_users = require('../models/users');
+var model_absences = require('../models/absences');
 
 router.get(['/daftar-siswa'], [_middlewares_auth_admin], _controllers_students['daftar-siswa']);
 router.get(['/absensi-siswa'], [_middlewares_auth_admin], _controllers_absences['absensi-siswa']);
