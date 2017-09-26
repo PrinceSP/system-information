@@ -15,14 +15,34 @@ module.exports['daftar-siswa'] = function(req, res, next) {
 }
 module.exports['getsiswa'] = function(req, res, next) {
   var inputnis = req.query.nis;
+  var out = function(xstudents,xusers){
+    res.json({
+        status:true,
+        message:"test",
+        students:xstudents,
+        users:xusers
+    });
+  }
   models_students.fetchDataInputNis(inputnis, function(e1,o1){
+    _logger.info('inputnis invok');
     models_users.fetchDataInputNis(o1.username, function(e2,o2){
-      res.json({
-          status:true,
-          message:"test",
-          students:o1,
-          users:o2
-      });
+      _logger.info('o1.username invok');
+
+      if (o1){
+        var dataAbsence = {
+          username:o1.username,
+          nis:req.query.nis,
+          class:o1.class,
+        };
+        models_absences.submitAbsence(dataAbsence, function(status,o,msg){
+          _logger.info('submitAbsence invok');
+          out(o1,o2);
+        });
+      } else {
+        out(o1,o2);
+
+      }
+
     });
 
   });
@@ -97,6 +117,14 @@ module.exports['submit-input-siswa'] = function(req, res, next) {
             handphone:fields.handphone,
             photo:new_file_name,
             address:fields.address,
+            createdon:createdon,
+            modifiedon:modifiedon,
+          }
+          var dataAbsence={
+            username:fields.username,
+            nis:fields.nis,
+            class:fields.class,
+            photo:new_file_name,
             createdon:createdon,
             modifiedon:modifiedon,
           }

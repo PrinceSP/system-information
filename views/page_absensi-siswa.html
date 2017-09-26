@@ -8,15 +8,6 @@
       Absensi siswa
       <small>Control panel</small>
     </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home </a></li>
-      <li class="/daftar-siswa">Daftar siswa</li>
-      <li class="/absensi-siswa">Absensi siswa</li>
-      <li class="/form-siswa">Form siswa</li>
-      <li class="/daftar-user">Daftar user</li>
-      <li class="/absensi-digital">Absensi digital</li>
-
-    </ol>
   </section>
 
   <section class="content">
@@ -43,7 +34,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <%absence.forEach(function(row){%>
+                  <%absences.forEach(function(row){%>
 
                   <tr role="row" class="odd">
                     <td class="sorting_1"><%=row.username%></td>
