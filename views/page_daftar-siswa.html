@@ -1,5 +1,4 @@
 <%include includes/header.html%>
-
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
@@ -34,29 +33,37 @@
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                 <thead>
-                <tr role="row">
+                <tr role="row" id="remove">
                   <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Username</th>
                   <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">NIS</th>
                   <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Class</th>
                   <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Date of birth</th>
                   <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Handphone</th>
                   <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Photo</th>
+                  <th class="rmbtn"  tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Remove</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%students.forEach(function(row){%>
 
 
-          <tr role="row" class="odd">
+          <tr role="row" class="odd" id="demo">
                   <td class="sorting_1"><%=row.username%></td>
                   <td><%=row.nis%></td>
                   <td><%=row.class%></td>
                   <td><%=row.date_of_birth%></td>
                   <td><%=row.handphone%></td>
                   <td><img class="photo_in_table" src="/upload/<%=row.photo%>"></td>
-                </tr>
+                  <td><button type="button" onclick="window.location.href='/delete-siswa?id=<%=row._id%>'">Delete</button></td>
+          </tr>
                 <%})%>
-              </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing student data</div></div>
+              </table>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-sm-5">
+              <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing student data</div>
+              </div>
               <div class="col-sm-7">
                 <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                   <ul class="pagination">

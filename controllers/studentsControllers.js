@@ -13,6 +13,21 @@ module.exports['daftar-siswa'] = function(req, res, next) {
 
   });
 }
+
+module.exports['delete-siswa'] = function(req, res, next) {
+  var deletedata = req.query.id
+  res.json({
+    status:true,
+    message:"test"
+  });
+}
+models.students.deleteData(id, function(e1,o2){
+  _logger.info('id invok');
+  models_students.deleteData(id, function(e1,o2){
+    
+  })
+})
+
 module.exports['getsiswa'] = function(req, res, next) {
   var inputnis = req.query.nis;
   var out = function(xstudents,xusers){

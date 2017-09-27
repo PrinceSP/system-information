@@ -22,6 +22,7 @@ router.get(['/logout'],[], _controllers_logins['logout']);
 router.get(['/register'],[], _controllers_logins['register']);
 router.post(['/submit-login'],[], _controllers_logins['submit-login']);
 router.post(['/submit-input-user'],[], _controllers_users['submit-input-user']);
+router.get(['/delete-siswa'],[], _controllers_students['delete-siswa']);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

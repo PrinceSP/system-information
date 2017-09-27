@@ -48,6 +48,10 @@ const fetchData = function(callback){
 
 module.exports.fetchData=fetchData;
 
+module.exports.deleteData=function(id,callback){
+  model.findOneAndRemove(id)
+}
+
 module.exports.fetchDataInputNis=function(inputnis,callback){
   model.findOne({nis:inputnis},function(e,o){
     callback(e,o);
