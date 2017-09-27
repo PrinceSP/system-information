@@ -15,7 +15,7 @@ router.get(['/absensi-siswa'], [_middlewares_auth_admin], _controllers_absences[
 router.get(['/form-siswa'], [], _controllers_students['form-siswa']);
 router.get(['/form-user'], [], _controllers_users['form-user']);
 router.post(['/submit-input-siswa'], [], _controllers_students['submit-input-siswa']);
-router.get(['/daftar-user'], [_middlewares_auth_admin], _controllers_users['daftar-user']);
+router.get(['/daftar-user'], [], _controllers_users['daftar-user']);
 router.get(['/absensi-digital'],[], _controllers_absences['absensi-digital']);
 router.get(['/login'],[], _controllers_logins['login']);
 router.get(['/logout'],[], _controllers_logins['logout']);
@@ -25,7 +25,7 @@ router.post(['/submit-input-user'],[], _controllers_users['submit-input-user']);
 router.get(['/delete-siswa'],[], _controllers_students['delete-siswa']);
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',[_middlewares_auth_admin], function(req, res, next) {
   res.render('index', { title: 'HOME' });
 });
 router.get('/Kelas-X', function(req, res, next) {
