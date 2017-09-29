@@ -49,13 +49,14 @@ const fetchData = function(callback){
 module.exports.fetchData=fetchData;
 
 module.exports.deleteData=function(id, callback){
-
+  // Todo.findByIdAndRemove
   model.findByIdAndRemove(id, function(err, obj){
     var e = err;
     var o = obj;
     callback(e, o);
   });
 }
+
 module.exports.fetchDataInputNis=function(inputnis,callback){
   model.findOne({nis:inputnis},function(e,o){
     callback(e,o);

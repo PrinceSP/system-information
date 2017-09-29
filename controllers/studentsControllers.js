@@ -20,7 +20,7 @@ module.exports['delete-siswa'] = function(req, res, next) {
   models_students.deleteData(id, function(e1,o2){
     _logger.info('id invok');
     var message = '';
-    if (e1) {
+    if(e1){
       message = 'failed delete data';
     } else {
       message = 'success delete data';
