@@ -7,26 +7,28 @@ const models_users = require('../models/users');
 const models_absences = require('../models/absences');
 
 module.exports['daftar-siswa'] = function(req, res, next) {
+  var message = req.query.message;
   models_students.fetchdataJoinUser(function(e,o){
 
-    res.render('page_daftar-siswa.html', { students:o,title: 'DAFTAR SISWA' });
+    res.render('page_daftar-siswa.html', { message: message, students:o,title: 'DAFTAR SISWA' });
 
   });
 }
 
 module.exports['delete-siswa'] = function(req, res, next) {
-  var deletedata = req.query.id
-  res.json({
-    status:true,
-    message:"test"
+  var id = req.query.id; //data id yang akan di delete
+  models_students.deleteData(id, function(e1,o2){
+    _logger.info('id invok');
+    var message = '';
+    if (e1) {
+      message = 'failed delete data';
+    } else {
+      message = 'success delete data';
+    }
+    res.redirect('/daftar-siswa?message='+message);
   });
 }
-models.students.deleteData(id, function(e1,o2){
-  _logger.info('id invok');
-  models_students.deleteData(id, function(e1,o2){
-    
-  })
-})
+
 
 module.exports['getsiswa'] = function(req, res, next) {
   var inputnis = req.query.nis;

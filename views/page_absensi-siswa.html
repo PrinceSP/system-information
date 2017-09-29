@@ -30,6 +30,7 @@
                     <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Username</th>
                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">NIS</th>
                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Class</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Remove</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -39,6 +40,7 @@
                     <td class="sorting_1"><%=row.username%></td>
                     <td><%=row.nis%></td>
                     <td><%=row.class%></td>
+                    <td><button type="button" onclick="window.location.href='/delete-absence?id=<%=row._id%>'">Delete</button></td>
                   </tr>
                   <%})%>
                       </table>

@@ -48,10 +48,14 @@ const fetchData = function(callback){
 
 module.exports.fetchData=fetchData;
 
-module.exports.deleteData=function(id,callback){
-  model.findOneAndRemove(id)
-}
+module.exports.deleteData=function(id, callback){
 
+  model.findByIdAndRemove(id, function(err, obj){
+    var e = err;
+    var o = obj;
+    callback(e, o);
+  });
+}
 module.exports.fetchDataInputNis=function(inputnis,callback){
   model.findOne({nis:inputnis},function(e,o){
     callback(e,o);
@@ -84,7 +88,6 @@ module.exports.fetchdataJoinUser = function(callback){
                   r['date_of_birth'] = users_map[u.username].date_of_birth;
                   r['handphone'] = users_map[u.username].handphone;
                   r['password'] = users_map[u.username].password;
-                  // r['photo'] = users_map[u.username].photo;
                   return r;
                 });
                 callback(e,result);

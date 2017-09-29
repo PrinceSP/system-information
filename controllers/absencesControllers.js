@@ -12,6 +12,21 @@ module.exports['absensi-siswa'] = function(req, res, next) {
     res.render('page_absensi-siswa.html', { absences:o,title: 'ABSENSI SISWA' });
   });
 }
+
+module.exports['delete-absence'] = function(req, res, next) {
+  var id = req.query.id; //data id yang akan di delete
+  models_absences.deleteAbsence(id, function(e1,o2){
+    _logger.info('id invok');
+    var message = '';
+    if (e1) {
+      message = 'failed delete data';
+    } else {
+      message = 'success delete data';
+    }
+    res.redirect('/absensi-siswa?message='+message);
+  });
+}
+
 module.exports['absensi-digital'] = function(req, res, next) {
   res.render('page_absensi-digital.html', { title: 'ABSENSI DIGITAL' });
 }

@@ -33,7 +33,14 @@ module.exports.fetchDataByEmail=function(email,callback){
   });
 }
 
+module.exports.deleteUser=function(id, callback){
 
+  model.findByIdAndRemove(id, function(err, obj){
+    var e = err;
+    var o = obj;
+    callback(e, o);
+  });
+}
 module.exports.submitUser=function(userData,callback){
   var user = model(userData);
   user.save(function(e,o){

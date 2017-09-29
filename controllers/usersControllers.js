@@ -14,6 +14,20 @@ module.exports['daftar-user'] = function(req, res, next) {
   });
 }
 
+module.exports['delete-user'] = function(req, res, next) {
+  var id = req.query.id; //data id yang akan di delete
+  models_users.deleteUser(id, function(e1,o2){
+    _logger.info('id invok');
+    var message = '';
+    if (e1) {
+      message = 'failed delete data';
+    } else {
+      message = 'success delete data';
+    }
+    res.redirect('/daftar-user?message='+message);
+  });
+}
+
 module.exports['form-user'] = function(req, res, next) {
     res.render('page_form-user.html', { title: 'FORM USER' });
 }

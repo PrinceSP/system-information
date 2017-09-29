@@ -26,6 +26,15 @@ module.exports.submitAbsence=function(absenceData,callback){
   });
 }
 
+module.exports.deleteAbsence=function(id, callback){
+
+  model.findByIdAndRemove(id, function(err, obj){
+    var e = err;
+    var o = obj;
+    callback(e, o);
+  });
+}
+
 module.exports.fetchdata = function(callback){
 
   model .find({},function(e,o){
