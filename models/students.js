@@ -4,7 +4,8 @@ const formidable = require('formidable');
 const path = require('path');
 const fs = require('fs');
 const async = require('async');
-const model_users = require('./users.js');
+const models_users = require('../models/users');
+
 var schema = {
   "username": {type:String, match:/^[a-z0-9]+$/i,minilength:3, maxlength:30, required:true,index: {unique: true}}, //primary key
   "nis": {type:String, required:true,index: {unique: true}},
@@ -72,13 +73,13 @@ module.exports.fetchdataJoinUser = function(callback){
   };
 
   var fetchDataUsersByDataStudents = function(students,cb){
-    model_users.model.find({
+    models_users.model.find({
       username: { "$in": students.map(function(el){
                           var el_username = el.username;
                           return el_username;
                         })
                 }
-              },function(e, users) {
+              }),function(e, users) {
                 var users_map = {};
                 users.forEach(function(v,k){
                   users_map[v.username] = v;
@@ -92,7 +93,7 @@ module.exports.fetchdataJoinUser = function(callback){
                   return r;
                 });
                 callback(e,result);
-              });
+              };
 
 
 

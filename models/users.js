@@ -3,6 +3,8 @@ const formidable = require('formidable');
 const path = require('path');
 const fs = require('fs');
 const mongoose = require('mongoose');
+const models_students = require('../models/students');
+
 var schema = {
   "fullname": {type:String, default:'-'},
   "username": {type:String, match:/^[a-z0-9]+$/i,minilength:3, maxlength:30, required:true,index: {unique: true}}, //primary key
