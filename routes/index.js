@@ -32,6 +32,7 @@ router.get(['/delete-siswa'],[], _controllers_students['delete-siswa']);
 router.get('/',[_middlewares_auth_admin], function(req, res, next) {
   res.render('index', { title: 'HOME' });
 });
+/* all class render query */
 router.get('/Kelas-X', function(req, res, next) {
   res.render('page_Kelas-X.html', { title: 'KELAS X'});
 });
