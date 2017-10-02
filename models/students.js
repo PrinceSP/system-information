@@ -66,13 +66,17 @@ module.exports.fetchDataInputNis=function(inputnis,callback){
 
 
 module.exports.fetchdataJoinUser = function(callback){
+  _logger.info('fetchdataJoinUser invok');
   var fetchDataStudents=function(cb){
+    _logger.info('fetchDataStudents invok');
     fetchData(function(e,o){
+      _logger.info('fetchData invok');
       cb(e,o);
     });
   };
 
   var fetchDataUsersByDataStudents = function(students,cb){
+    _logger.info('fetchDataUsersByDataStudents invok');
     models_users.model.find({
       username: { "$in": students.map(function(el){
                           var el_username = el.username;
@@ -80,6 +84,7 @@ module.exports.fetchdataJoinUser = function(callback){
                         })
                 }
               }),function(e, users) {
+                _logger.info('models_users invok');
                 var users_map = {};
                 users.forEach(function(v,k){
                   users_map[v.username] = v;

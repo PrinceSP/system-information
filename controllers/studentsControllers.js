@@ -8,8 +8,10 @@ const models_absences = require('../models/absences');
 module.exports['daftar-siswa'] = function(req, res, next) {
   _logger.info('daftar-siswa invok');
   var message = req.query.message;
+  _logger.info('message invok');
   models_students.fetchdataJoinUser(function(e,o){
-    res.render('page_daftar-siswa.html', { message: message, students:o,title: 'DAFTAR SISWA' });
+    _logger.info('fetchdataJoinUser invok');
+    res.render('page_daftar-siswa.html', { message:message, students:o,title: 'DAFTAR SISWA' });
   });
 }
 
@@ -64,7 +66,6 @@ module.exports['getsiswa'] = function(req, res, next) {
 
 };
 module.exports['form-siswa'] = function(req, res, next) {
-
 
     res.render('page_form-siswa.html', { title: 'FORM SISWA' });
 
