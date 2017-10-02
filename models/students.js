@@ -39,7 +39,10 @@ module.exports.submitStudent=submitStudent;
 const fetchData = function(callback){
 
   model.find({},function(e,o){
-    if(e) return callback(e,o);
+    if(e){
+      _logger.info('e===>', e);
+      return callback(e,o);
+    }
     else {
       callback(e,o);
     }
@@ -70,13 +73,14 @@ module.exports.fetchdataJoinUser = function(callback){
   var fetchDataStudents=function(cb){
     _logger.info('fetchDataStudents invok');
     fetchData(function(e,o){
-      _logger.info('fetchData invok');
+      _logger.info('fetchData invok o==>', o);
       cb(e,o);
     });
   };
 
   var fetchDataUsersByDataStudents = function(students,cb){
-    _logger.info('fetchDataUsersByDataStudents invok');
+    _logger.info('fetchDataUsersByDataStudents invok,',students);
+    if(!(students && students.length > 0)) return callback('Students not found',[]);
     models_users.model.find({
       username: { "$in": students.map(function(el){
                           var el_username = el.username;
