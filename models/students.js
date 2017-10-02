@@ -83,30 +83,43 @@ module.exports.fetchdataJoinUser = function(callback){
 
     //kalo nilai students kosong maka langsung hit callback
     if(!(students && students.length > 0)) return callback('Students not found',[]);
+    _logger.info('students invok');
 
     ///kalo nilai students kosong maka coding di bawa tidak akan di execute, karena sudah di return di atas.
     models_users.model.find({
       username: { "$in": students.map(function(el){
+        _logger.info('username map invok');
                     var el_username = el.username;
                     return el_username;
                   })
                 }
-      }),function(e, users) {
+      },function(e, users) {
       _logger.info('models_users invok');
       var users_map = {};
       users.forEach(function(v,k){
         users_map[v.username] = v;
       });
+      _logger.info('users invok',users_map);
+
 
       var result = students.map(function(u,k){
         var r = u;
-        r['date_of_birth'] = users_map[u.username].date_of_birth;
-        r['handphone'] = users_map[u.username].handphone;
-        r['password'] = users_map[u.username].password;
+
+        var user = users_map[u.username];
+        _logger.info('row users=',user);
+        if (user){
+
+        r['date_of_birth'] = user.date_of_birth;
+        r['handphone'] = user.handphone;
+        r['password'] = user.password;
         return r;
+      }else {
+        return r;
+      }
+
       });
       callback(e,result);
-    };
+    });
   }
   async.waterfall([
     fetchDataStudents,
