@@ -27,12 +27,14 @@ router.post(['/submit-register'],[], _controllers_logins['submit-register']);
 router.post(['/submit-input-user'],[], _controllers_users['submit-input-user']);
 router.get(['/delete-siswa'],[], _controllers_students['delete-siswa']);
 
-
 /* GET home page. */
 router.get('/',[_middlewares_auth_admin], function(req, res, next) {
   res.render('index', { title: 'HOME' });
 });
-/* all class render query */
+// all class render query
+router.get('/absensi-siswa', function(req, res, next) {
+  res.render('page_absensi-siswa.html', { title: 'ABSENSI SISWA'});
+});
 router.get('/Kelas-X', function(req, res, next) {
   res.render('page_Kelas-X.html', { title: 'KELAS X'});
 });
@@ -95,6 +97,46 @@ router.get('/tkj12', function(req, res, next) {
 });
 router.get('/upw12', function(req, res, next) {
   res.render('page_upw12.html', { title: 'USAHA PERJALANAN WISATA'});
+});
+router.get('/input-siswa', function(req, res, next) {
+  res.render('page_input-siswa.html', { title: 'INPUT SISWA'});
+});
+router.post('/submit-input-siswa', function(req, res, next) {
+  var createdon=new Date().getTime();
+  var modifiedon=createdon;
+  var dataStudents={
+    username:req.body.username,
+    nis:req.body.nis,
+    class:req.body.class,
+    createdon:createdon,
+    modifiedon:modifiedon,
+    year_in:req.body.year_in
+  }
+  var dataUsers={
+    fullname:req.body.fullname,
+    username:req.body.username,
+    email:req.body.email,
+    date_of_birth:req.body.date_of_birth,
+    handphone:req.body.handphone,
+    address:req.body.address,
+    createdon:createdon,
+    modifiedon:modifiedon,
+  }
+  model_students.submitStudent(dataStudents,function(status,o){
+
+    res.json({
+      fullname:req.body.fullname,
+      username:req.body.username,
+      email:req.body.email,
+      date_of_birth:req.body.date_of_birth,
+      handphone:req.body.handphone,
+      address:req.body.address,
+      year_in:req.body.year_in,
+      class:req.body.class,
+      nis:req.body.nis,
+      photo:req.body.photo
+    });
+  });
 });
 
 module.exports = router;
